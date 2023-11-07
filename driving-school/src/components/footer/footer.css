@@ -1,0 +1,25 @@
+.footer-container{
+    display: flex;
+    align-items: center;
+    padding: 45px 65px;
+    justify-content: space-between;
+    background-color: var(--header-bg);
+    font-size: 24px;
+}
+.footer_work-time-title{
+    font-size: 30px;
+    text-decoration: underline;
+    margin-bottom: 13px;
+}
+.footer-socials{
+    display: flex;
+    gap: 33px;
+    justify-content: end;
+    margin-bottom: 19px;
+}
+.footer_socials-p,
+.footer_socials-p a
+{
+    margin:0;
+    color: #383838;
+}
