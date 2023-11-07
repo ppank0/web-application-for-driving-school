@@ -37,6 +37,18 @@ const Header = () => {
                     </Navbar.Collapse>
                 </Container>
             </Navbar>
+
+            {/* <Router>
+                <Routes>
+                    <Route exact path="/" element={<Home/>} />
+                    <Route exact path="/about" element={<About/>} />
+                    <Route exact path="/contacts" element={<Contacts/>} />
+                    <Route exact path="#action/3.1" element={<Contacts/>} />
+                    <Route exact path="#action/3.2" element={<Contacts/>} />
+                    <Route exact path="#action/3.3" element={<Contacts/>} />
+                    <Route exact path="/blog" element={<Blog/>} />
+                </Routes>
+            </Router> */}
         </>
      );
 }

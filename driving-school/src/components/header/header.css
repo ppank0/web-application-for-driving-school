@@ -5,9 +5,16 @@
 }
 .header-button.aligh-center{
     background-color:var(--darkblue);
+    border-color: var(--darkblue);
     border-radius: 14px;
     padding: 4px 22px;
     font-size: 24px;
+}
+.header-button.aligh-center:hover{
+    background-color: #063357e2;
+}
+.header-button.aligh-center:active{
+    background-color: rgba(3, 24, 41, 0.886)
 }
 .header-menu{
     font-size: 32px;
