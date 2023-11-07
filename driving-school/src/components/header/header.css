@@ -1,5 +1,5 @@
 
-.header-container{
+.header-navbar{
     background-color: var(--header-bg);
     padding: 0;
 }
@@ -29,4 +29,29 @@ a.header-dropdown-item:hover {
     color: var(--header-bg);
     background-color: var(--darkgray);
     transition: background-color 0.4s ease-out;
+}
+
+@media screen and (max-width:1200px){
+    .header-menu{
+        font-size: 22px;
+    }
+    .header-button.aligh-center{
+        padding: 1vh 3vw;
+        font-size: 18px;
+    }
+}
+@media screen and (max-width:992px){
+    .header-menu{
+        font-size: 16px;
+    }
+    .header-button.aligh-center{
+        padding: 1vh 3vw;
+        font-size: 14px;
+    }
+    img.header-logo{
+        width: 60px;
+    }
+    .header-container.container{
+        margin: 0 auto;
+    }
 }

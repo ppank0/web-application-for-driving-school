@@ -11,14 +11,14 @@ import './header.css'
 const Header = () => {
     return ( 
         <>
-            <Navbar className="header-container"
+            <Navbar className="header-navbar"
                 stinky="top"
                 collapseOnSelect
                 expand="md"
                 >
-                <Container >
+                <Container className="header-container">
                     <Navbar.Brand href="/">
-                        <img src={logo} width={80} className="d-inline-block aligh-center" alt="logo"></img>
+                        <img src={logo} width={80} className="d-inline-block aligh-center header-logo" alt="logo"></img>
                     </Navbar.Brand>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav" >
