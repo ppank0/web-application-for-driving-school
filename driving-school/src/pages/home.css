@@ -1,0 +1,23 @@
+.home-hero-section{
+    display: flex;
+    align-items: center;
+    position: relative;
+    justify-content: end;
+}
+.hero-section-text-box{
+    position: absolute;
+    left: 0;
+}
+
+.hero_section_text-box-p{
+    font-size: 28px;
+    margin-bottom: 36px;
+    width: 625px;
+}
+button.hero-button{
+    background-color: var(--red);
+    border: none;
+    font-size: 36px;
+    padding: 4px 44px;
+    border-radius: 21px;
+}
