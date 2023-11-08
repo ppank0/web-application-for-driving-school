@@ -1,13 +1,13 @@
 .footer-container{
     display: flex;
     align-items: center;
-    padding: 45px 65px;
+    padding: 20px 65px;
     justify-content: space-between;
     background-color: var(--header-bg);
-    font-size: 24px;
+    font-size: 18px;
 }
 .footer_work-time-title{
-    font-size: 30px;
+    font-size: 24px;
     text-decoration: underline;
     margin-bottom: 13px;
 }
@@ -16,6 +16,9 @@
     gap: 33px;
     justify-content: end;
     margin-bottom: 19px;
+}
+.footer-socials img{
+    width: 42px;
 }
 .footer_socials-p,
 .footer_socials-p a
