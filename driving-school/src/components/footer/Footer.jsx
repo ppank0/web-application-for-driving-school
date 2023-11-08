@@ -17,7 +17,7 @@ const Footer = () => {
                        <a href=""><img src={odnoclassnikiIcon} alt="odn"/></a> 
                        <a href=""><img src={mailIcon} alt="mail"/></a> 
                     </div>
-                    <p className="footer_socials-p">Разработка сайта: <a href="">ppank0</a></p>
+                    <p className="footer_socials-p">Разработка сайта: <a href="https://github.com/ppank0">ppank0</a></p>
                 </div>
             </div>
         </>
