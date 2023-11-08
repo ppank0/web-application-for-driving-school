@@ -1,8 +1,10 @@
 import { Button, Container } from 'react-bootstrap';
-import Header from '../components/header/Header'
-import Footer from '../components/footer/Footer'
-import heroImg from '../images/hero-img.png'
+import Header from '../components/header/Header';
+import Footer from '../components/footer/Footer';
+import heroImg from '../images/hero-img.png';
 import './home.css'
+import GroupHomeCards from '../components/GroupHomeCards';
+
 const Home = () => {
     return ( 
         <>
@@ -16,6 +18,7 @@ const Home = () => {
 
                 <img src={heroImg} alt="" className="img-fluid hero-section-img"/>
             </Container>
+                <GroupHomeCards/>
             <Footer/>
         </>
      );
