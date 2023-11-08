@@ -13,12 +13,16 @@ const Home = () => {
                 <div className="hero-section-text-box">
                     <p className="hero_section_text-box-p">Приглашаем присоединиться к нашей автошколе ДОСААФ города 
                     Быхов и начать ваше увлекательное и безопасное дорожное путешествие.</p>
-                    <Button className='hero-button'>Записаться</Button>
+                    <Button className='btn-danger hero-button'>Записаться</Button>
                 </div>
 
                 <img src={heroImg} alt="" className="img-fluid hero-section-img"/>
             </Container>
-                <GroupHomeCards/>
+                <div className="homeCards-section">
+                    <p className="homeCard_section-title">Что Мы Предлагаем</p>
+                    <GroupHomeCards/>
+                </div>
+                
             <Footer/>
         </>
      );

@@ -4,6 +4,9 @@
     position: relative;
     justify-content: end;
 }
+.home-hero-section.container{
+   padding: 0;
+}
 .hero-section-text-box{
     position: absolute;
     left: 0;
@@ -21,11 +24,25 @@ button.hero-button{
     padding: 4px 44px;
     border-radius: 21px;
 }
+button.hero-button:hover{
+    background-color: rgb(155, 11, 11);
+    transition: 0.2s ease-in;
+}
 
+.homeCard_section-title{
+    text-align: center;
+    color: var(--darkgray);
+    font-size: 68px;
+    font-weight: 600;
+    letter-spacing: 1.36px;
+    margin: 40px auto 20px;
+
+}
 @media screen and (max-width:1010px){
     .hero_section_text-box-p{
         font-size: 20px;
         margin-bottom: 26px;
+        
     }
     button.hero-button{
         font-size: 24px;
@@ -34,12 +51,15 @@ button.hero-button{
     .home-hero-section{
         flex-direction: column-reverse;
         
+        
     }
     .hero-section-text-box{
         position: relative;
         display: flex;
         align-items: center;
         margin-bottom: 8vh;
+        padding: 0 2vw;
+        gap: 2vw;
 
     }
 }
