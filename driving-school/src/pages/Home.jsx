@@ -2,6 +2,7 @@ import { Button, Container } from 'react-bootstrap';
 import Header from '../components/header/Header';
 import Footer from '../components/footer/Footer';
 import heroImg from '../images/hero-img.png';
+import whyImg from '../images/why-we-section.png'
 import './home.css'
 import GroupHomeCards from '../components/GroupHomeCards';
 
@@ -9,7 +10,7 @@ const Home = () => {
     return ( 
         <>
             <Header/>
-            <Container className='home-hero-section'>
+            <Container className='home_hero-section'>
                 <div className="hero-section-text-box">
                     <p className="hero_section_text-box-p">Приглашаем присоединиться к нашей автошколе ДОСААФ города 
                     Быхов и начать ваше увлекательное и безопасное дорожное путешествие.</p>
@@ -22,7 +23,17 @@ const Home = () => {
                     <p className="homeCard_section-title">Что Мы Предлагаем</p>
                     <GroupHomeCards/>
                 </div>
-                
+                <div className="home_why-we_container">
+
+                    <Container className='home_why-we-section'>
+                        <img className='img-fluid' src={whyImg} alt='img'/>
+                        <div className="why-we-textbox">
+                            <h1>Почему Мы?</h1>
+                            <p>Мы являемся официальным представителем ДОСААФ и предлагаем высококачественное обучение вождению и получение водительских прав.
+                                Наша автошкола имеет богатый опыт и отличную репутацию в области подготовки водителей.</p>
+                        </div>
+                    </Container>
+                </div>
             <Footer/>
         </>
      );
