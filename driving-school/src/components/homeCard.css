@@ -7,6 +7,10 @@
     width: 225px;
     border-radius: 25px;
     height: 154px;
+    transition: transform .4s ease-in-out;
+}
+.homeCard-container:hover{
+    transform:scale(1.08);
 }
 .homeCard-container img{
     margin-top: 12px;
