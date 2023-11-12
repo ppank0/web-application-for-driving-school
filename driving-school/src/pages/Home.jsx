@@ -5,6 +5,7 @@ import heroImg from '../images/hero-img.png';
 import whyImg from '../images/why-we-section.png'
 import './home.css'
 import GroupHomeCards from '../components/GroupHomeCards';
+import CostInfo from '../components/CostInfo';
 
 const Home = () => {
     return ( 
@@ -24,7 +25,6 @@ const Home = () => {
                     <GroupHomeCards/>
                 </div>
                 <div className="home_why-we_container">
-
                     <Container className='home_why-we-section'>
                         <img className='img-fluid' src={whyImg} alt='img'/>
                         <div className="why-we-textbox">
@@ -33,6 +33,12 @@ const Home = () => {
                                 Наша автошкола имеет богатый опыт и отличную репутацию в области подготовки водителей.</p>
                         </div>
                     </Container>
+                </div>
+                <div className="home_cost-section-container">
+                    <p className="home_cost_section-title">
+                        СТОИМОСТЬ ОБУЧЕНИЯ
+                    </p>
+                    <CostInfo/>
                 </div>
             <Footer/>
         </>

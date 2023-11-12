@@ -7,8 +7,8 @@
     background-color:var(--darkblue);
     border-color: var(--darkblue);
     border-radius: 14px;
-    padding: 2px 22px;
-    font-size: 20px;
+    padding: .5vh 2vw;
+    font-size: 18px;
 }
 .header-button.aligh-center:hover{
     background-color: #063357e2;
@@ -17,7 +17,8 @@
     background-color: rgba(3, 24, 41, 0.886)
 }
 .header-menu{
-    font-size: 28px;
+    font-size: 25px;
+    font-weight: 600;
     color: black;
     justify-content: space-around;
 }
@@ -36,8 +37,7 @@ a.header-dropdown-item:hover {
         font-size: 22px;
     }
     .header-button.aligh-center{
-        padding: 1vh 3vw;
-        font-size: 18px;
+        padding: .5vh 2vw;
     }
 }
 @media screen and (max-width:992px){
