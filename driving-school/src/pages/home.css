@@ -79,6 +79,19 @@ button.hero-button:hover{
     margin: 76px auto 62px;
 
 }
+.home_slogan-section{
+    background-color: var(--darkgray);
+    color: white;
+    font-size: 52px;
+    font-weight: 500;
+    letter-spacing: 0.065rem;
+    padding: 52px 140px;
+    text-align: center;
+    text-transform: capitalize;
+}
+.home_slogan-section p{
+    margin: 0;
+}
 @media screen and (max-width:1010px){
     .hero_section_text-box-p{
         font-size: 20px;
@@ -109,6 +122,10 @@ button.hero-button:hover{
     .home_why-we-section.container img{
         display: none;
         
+    }
+    .home_slogan-section{
+        font-size: 36px;
+        padding: 40px 100px;
     }
 }
 @media screen and (max-width:700px)
