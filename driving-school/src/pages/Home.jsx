@@ -10,7 +10,7 @@ import CostInfo from '../components/CostInfo';
 const Home = () => {
     return ( 
         <>
-            <Header/>
+            {/* <Header/> */}
             <Container className='home_hero-section'>
                 <div className="hero-section-text-box">
                     <p className="hero_section_text-box-p">Приглашаем присоединиться к нашей автошколе ДОСААФ города 

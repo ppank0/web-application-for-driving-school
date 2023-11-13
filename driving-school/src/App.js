@@ -1,10 +1,10 @@
-import Home from './pages/Home'
+import Header from './components/header/Header'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 function App() {
   return (
     <div className="App">
-      <Home/>
+      <Header/>
     </div>
   );
 }
