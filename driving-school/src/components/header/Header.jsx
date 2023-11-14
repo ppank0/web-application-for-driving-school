@@ -11,6 +11,7 @@ import logo from '../../images/logo.png'
 import './header.css'
 import About from './../../pages/About'
 import Home from './../../pages/Home'
+import Contacts from "../../pages/Contacts";
 const Header = () => {
     return ( 
         <>
@@ -46,8 +47,8 @@ const Header = () => {
                     <Route exact path="/" element={<Home/>} />
                     <Route exact path="/about" element={<About/>} />
                    
-                    {/* <Route exact path="/contacts" element={<Contacts/>} />
-                    <Route exact path="#action/3.1" element={<Contacts/>} />
+                    <Route exact path="/contacts" element={<Contacts/>} />
+                    {/* <Route exact path="#action/3.1" element={<Contacts/>} />
                     <Route exact path="#action/3.2" element={<Contacts/>} />
                     <Route exact path="#action/3.3" element={<Contacts/>} />
                     <Route exact path="/blog" element={<Blog/>} /> */}
