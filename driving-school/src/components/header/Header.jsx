@@ -13,6 +13,7 @@ import About from './../../pages/About'
 import Home from './../../pages/Home'
 import Contacts from "../../pages/Contacts";
 import Registration from './../../pages/Registration'
+import LogIn from './../../pages/LogIn'
 const Header = () => {
     return ( 
         <>
@@ -49,6 +50,7 @@ const Header = () => {
                     <Route exact path="/about" element={<About/>} />
                     <Route exact path="/contacts" element={<Contacts/>} />
                     <Route exact path="/registration" element={<Registration/>} />
+                    <Route exact path="/login" element={<LogIn/>} />
                     {/* <Route exact path="#action/3.1" element={<Contacts/>} />
                     <Route exact path="#action/3.2" element={<Contacts/>} />
                     <Route exact path="#action/3.3" element={<Contacts/>} />

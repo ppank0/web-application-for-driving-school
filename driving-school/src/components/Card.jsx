@@ -21,7 +21,7 @@ const Card = (props) => {
                     {isRegistration && (
                         <div className="card_under-textbox">
                             <p className='small'>*Зарегистрируйтесь, чтобы записаться на обучение</p>
-                            <p>Есть аккаунт? &#45;&#62;<a href="">Войти</a></p>
+                            <p>Есть аккаунт? &#45;&#62;<a href="/login">Войти</a></p>
                         </div>
                     )}
                 </div>
