@@ -16,16 +16,19 @@
     gap: 11px;
     margin-bottom: 3%;
 }
+.contacts_textbox p{
+   width: 15rem;
+}
 
-/* .contacts-map{
+.contacts-map{
     width: 50%;
     height: auto;
     position: relative;
-} */
-/* .contacts-map-container{
+}
+.contacts-map-container{
     width: 100%;
     height: 100%;
-} */
+}
 @media screen and (max-width:990px)
 {
     .contacts-container{
@@ -37,6 +40,9 @@
     .contacts_textbox{
         font-size: 18px;
     }
+    .contacts_textbox p{
+        margin: 0;
+    }
     .contacts-textbox{
         display: flex;
         gap: 2rem;
@@ -45,5 +51,22 @@
     }
     .contacts_textbox-container{
         width: 50%;
+    }
+
+    .contacts-map{
+        width: 100%;
+    }
+}
+
+@media screen and (max-width:990px)
+{
+    .contacts-textbox h1{
+        font-size: 20px;
+    }
+    .contacts_textbox{
+        font-size: 14px;
+    }
+    .contacts_textbox img{
+        width: 65px;
     }
 }
