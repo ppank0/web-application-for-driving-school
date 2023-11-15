@@ -12,6 +12,7 @@ import './header.css'
 import About from './../../pages/About'
 import Home from './../../pages/Home'
 import Contacts from "../../pages/Contacts";
+import Registration from './../../pages/Registration'
 const Header = () => {
     return ( 
         <>
@@ -37,7 +38,7 @@ const Header = () => {
                             </NavDropdown>
                             <Nav.Link href="/contacts"> КОНТАКТЫ </Nav.Link>
                         </Nav>
-                        <Button className="aligh-center header-button">регистрация</Button>
+                            <Button href="/registration" className="aligh-center header-button">регистрация</Button>
                     </Navbar.Collapse>
                 </Container>
             </Navbar>
@@ -46,8 +47,8 @@ const Header = () => {
                 <Routes>
                     <Route exact path="/" element={<Home/>} />
                     <Route exact path="/about" element={<About/>} />
-                   
                     <Route exact path="/contacts" element={<Contacts/>} />
+                    <Route exact path="/registration" element={<Registration/>} />
                     {/* <Route exact path="#action/3.1" element={<Contacts/>} />
                     <Route exact path="#action/3.2" element={<Contacts/>} />
                     <Route exact path="#action/3.3" element={<Contacts/>} />

@@ -1,5 +1,4 @@
 import { Button, Container } from 'react-bootstrap';
-import Header from '../components/header/Header';
 import Footer from '../components/footer/Footer';
 import heroImg from '../images/hero-img.png';
 import whyImg from '../images/why-we-section.png'
