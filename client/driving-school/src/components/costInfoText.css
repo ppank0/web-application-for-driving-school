@@ -1,0 +1,34 @@
+.costInfoText-container{
+    display: flex;
+    color: black;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+    font-weight: 700;
+    /* width: 603px; */
+}
+.costInfoText-text{
+    font-size: 24px;
+    text-transform: uppercase;
+    width: 310px;
+}
+.costInfoText-cost{
+    color: var(--darkgray);
+    font-size: 36px;
+    margin: 0;
+    text-transform: lowercase;
+}
+
+@media screen and (max-width:700px)
+{
+    .costInfoText-container{
+        gap: 20px;
+    }
+    .costInfoText-text{
+        font-size: 18px;
+        width: 200px;
+    }
+    .costInfoText-cost{
+        font-size: 24px;
+    }
+}

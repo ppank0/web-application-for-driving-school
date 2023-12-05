@@ -1,0 +1,150 @@
+.home_hero-section{
+    display: flex;
+    align-items: center;
+    position: relative;
+    justify-content: end;
+}
+.home_hero-section.container{
+   padding: 0;
+}
+.hero-section-text-box{
+    position: absolute;
+    left: 0;
+}
+.img-fluid.hero-section-img{
+    height: 90vh;
+}
+.hero_section_text-box-p{
+    font-size: 24px;
+    margin-bottom: 36px;
+    max-width: 625px;
+}
+button.hero-button{
+    background-color: var(--red);
+    border: none;
+    font-size: 28px;
+    padding: 4px 44px;
+    border-radius: 21px;
+}
+button.hero-button a{
+    color: white;
+    text-decoration: none;
+}
+/* button.red-btn:hover{
+    background-color: rgb(155, 11, 11);
+    transition: 0.2s ease-in;
+} */
+
+.homeCard_section-title{
+    text-align: center;
+    color: var(--darkgray);
+    font-size: 52px;
+    font-weight: 600;
+    letter-spacing: 1.36px;
+    margin: 40px auto 20px;
+
+}
+.home_why-we_container{
+    background-color: var(--darkgray);
+    padding: 56px 0;
+}
+.home_why-we-section.container{
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 38px;
+    font-size: 22px;
+    
+}
+.home_why-we-section img{
+    width: 65vh;
+}
+.why-we-textbox{
+    text-align: center;
+}
+.why-we-textbox h1{
+    margin-bottom: 30px;
+    font-size: 36px;
+    letter-spacing: .115rem;
+}
+
+.home_cost_section-title{
+    font-size: 36px;
+    color: var(--darkblue);
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 47px;
+}
+
+.home_cost-section-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 76px auto 62px;
+
+}
+.home_slogan-section{
+    background-color: var(--darkgray);
+    color: white;
+    font-size: 52px;
+    font-weight: 500;
+    letter-spacing: 0.065rem;
+    padding: 52px 160px;
+    text-align: center;
+    text-transform: capitalize;
+}
+.home_slogan-section p{
+    margin: 0;
+}
+@media screen and (max-width:1010px){
+    .hero_section_text-box-p{
+        font-size: 20px;
+        margin-bottom: 26px;
+        
+    }
+    button.hero-button{
+        font-size: 24px;
+        padding: 2px 22px;
+    }
+    .home_hero-section{
+        flex-direction: column-reverse;
+    }
+    .hero-section-text-box{
+        position: relative;
+        display: flex;
+        align-items: center;
+        margin-bottom: 8vh;
+        padding: 0 2vw;
+        gap: 2vw;
+    }
+    .homeCard_section-title{
+        font-size: 52px;
+    }
+}
+@media screen and (max-width:992px)
+{
+    .home_why-we-section.container img{
+        display: none;
+        
+    }
+    .home_slogan-section{
+        font-size: 36px;
+        padding: 40px 100px;
+    }
+}
+@media screen and (max-width:700px)
+{
+    .home_cost_section-title{
+        font-size: 26px;
+        font-weight: 700;
+        margin-bottom: 35px;
+    }
+    
+    .home_cost-section-container{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 76px auto 62px;
+    
+    }
+}

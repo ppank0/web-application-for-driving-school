@@ -1,0 +1,25 @@
+.homeCard-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    background-color: rgb(255, 255, 255);
+    width: 225px;
+    border-radius: 25px;
+    height: 154px;
+    transition: transform .4s ease-in-out;
+}
+.homeCard-container:hover{
+    transform:scale(1.08);
+}
+.homeCard-container img{
+    margin-top: 12px;
+}
+.homeCrad-title{
+    margin: 12px 15px 0 ;
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 0.36px;
+    text-align: center;
+    text-transform: uppercase;
+}
