@@ -1,6 +1,7 @@
 import { Container, Button } from 'react-bootstrap';
 import './card.css'
-import Footer from './footer/Footer';
+import Footer from '../components/footer/Footer';
+import { useForm } from 'react-hook-form';
 
 const Card = (props) => {
     const {title, isRegistration, buttonText} = props
