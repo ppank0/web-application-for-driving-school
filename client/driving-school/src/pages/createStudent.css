@@ -1,0 +1,41 @@
+.create_student-container{
+    margin: 6vh 8vw;
+}
+
+.form-row {
+    margin-bottom: 20px;
+    padding: 0 10vw;
+  }
+  
+  .form-row label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .form-row span {
+    font-weight: bold;
+  }
+  
+  .form-row input,
+  .form-row select {
+    width: 100%;
+    height: 40px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    padding: 3px 1vw;
+  }
+  
+  .form-row button {
+    background-color: var(--red);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+  input{
+    padding: 5vw 1vh;
+  }
+  .form-row button:hover {
+    background-color: #780d0d;
+  }
