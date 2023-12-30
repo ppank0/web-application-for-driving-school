@@ -1,0 +1,20 @@
+.service-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Две колонки равной ширины */
+    grid-gap: 50px;
+    font-size: 18px;
+    margin-bottom: 5vh;
+}
+
+.service-name{
+    margin: 7vh 0 3vh;
+}
+
+hr{
+    margin-bottom: 6vh;
+}
+.service-price{
+    font-size: 35px;
+    font-weight: 700;
+    color: var(--red);
+}
