@@ -13,7 +13,7 @@ const ServiceC = () => {
              price='850p'
              duration=" не менее месяцa"/>
         </Container>
-        <Footer/>
+        {/* <Footer/> */}
         </>
      );
 }

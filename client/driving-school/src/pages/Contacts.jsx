@@ -46,7 +46,7 @@ const Contacts = () => {
                     </MapContainer>
                 </div>
             </Container>
-            <Footer/>
+            {/* <Footer/> */}
         </>
      );
 }

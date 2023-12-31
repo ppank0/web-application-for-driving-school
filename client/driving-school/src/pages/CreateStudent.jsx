@@ -201,7 +201,7 @@ const CreateStudent = observer(() => {
                 </div>
             </form>
         </Container>
-        <Footer/>
+        {/* <Footer/> */}
     </>
   );
 });

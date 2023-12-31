@@ -46,7 +46,7 @@ const Home = () => {
                 <div className="home_slogan-section">
                     <p>Безопасность на дорогах - наш приоритет, а ваш успех - наша гордость!</p>
                 </div>
-            <Footer/>
+            {/* <Footer/> */}
         </>
      );
 }

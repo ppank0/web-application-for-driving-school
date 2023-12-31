@@ -13,7 +13,7 @@ const ServiceD = () => {
              price='900p'
              duration=" не менее месяцa"/>
         </Container>
-        <Footer/>
+        {/* <Footer/> */}
         </>
      );
 }

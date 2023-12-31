@@ -18,7 +18,7 @@ const ServiceBC = () => {
              price='280p'
              duration=" около месяца"/>
         </Container>
-        <Footer/>
+        {/* <Footer/> */}
         </>
      );
 }
