@@ -2,6 +2,7 @@ import './costInfo.css'
 import { Button } from 'react-bootstrap';
 import arrowImg from './../images/Arrow-sm.svg'
 import CostInfoText from './CostInfoText';
+import { SERVICE_BC_ROUTE } from '../utils/consts';
 const CostInfo = () => {
     return ( 
         <>
@@ -14,7 +15,7 @@ const CostInfo = () => {
                     <CostInfoText title="Категория D" cost="900p"/>
                 </div>
                 
-                <Button variant='danger costInfo-btn red-btn'>Узнать подробнее <img src={arrowImg} alt="arrow"/></Button>
+                <Button variant='danger costInfo-btn red-btn' href={SERVICE_BC_ROUTE}>Узнать подробнее <img src={arrowImg} alt="arrow"/></Button>
             </div>
         </>
      );

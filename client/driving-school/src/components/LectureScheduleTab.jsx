@@ -18,6 +18,7 @@ const LectureScheduleTab = () => {
   return (
     <div >
       <h2 className="mt-4 mb-4">Расписание занятий</h2>
+      {student.isStudent ?
       <div className="card">
         <ul className="list-group list-group-flush">
           {lectures.map((lec) => (
@@ -27,7 +28,9 @@ const LectureScheduleTab = () => {
             </li>
           ))}
         </ul>
-      </div>
+      </div> :
+      <h2 style={{color: 'gray', textAlign: 'center'}}>Вы не проходите обучение, запишитесь на курс</h2>
+      }
     </div >
   );
 };

@@ -17,6 +17,7 @@ const ExamsTab = () => {
       return (
         <div>
           <h2 className='mt-4'>Зачёты/экзамены</h2>
+          {student.isStudent?
           <div className="card">
             <ul className="list-group list-group-flush">
               {results.map((ex) => (
@@ -29,7 +30,8 @@ const ExamsTab = () => {
                 </li>
               ))}
             </ul>
-          </div>
+          </div> : <h2 className='mt-4' style={{color: 'gray', textAlign: 'center'}}>Вы не проходите обучение, запишитесь на курс</h2>
+          }
         </div>
       );
     }
