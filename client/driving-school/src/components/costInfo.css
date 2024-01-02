@@ -12,7 +12,7 @@
     display: flex;
     flex-direction: column;
 }
-button.costInfo-btn{
+a.btn.btn-danger.costInfo-btn.red-btn{
     background-color: var(--red);
     font-size: 20px;
     border-radius: 14px;
