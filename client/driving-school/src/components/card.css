@@ -1,5 +1,5 @@
 .card-container{
-    margin: 92px 0;
+    margin: 92px auto;
     display: flex;
     justify-content: center;
 }

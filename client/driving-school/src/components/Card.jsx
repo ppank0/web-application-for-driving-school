@@ -1,16 +1,21 @@
 import { Container, Button } from 'react-bootstrap';
 import './card.css'
-import Footer from '../components/footer/Footer';
 import { useForm } from 'react-hook-form';
 import { useState } from 'react';
 import { login, registration } from '../http/userAPI';
 import { observer } from 'mobx-react-lite';
+import { useContext } from 'react';
+import { Context } from '../index';
+import { useNavigate }from 'react-router-dom'
+import { HOME_ROUTE } from '../utils/consts';
 
 const Card = observer((props) => {
+    const { user } = useContext(Context);
     const {title, isRegistration, buttonText} = props
     const { register, reset, handleSubmit, formState: {errors, isValid}, watch } = useForm({mode: 'onBlur'});
-
+    const navigate = useNavigate()
     const [showPassword, setShowPassword] = useState(false);
+    //const [errorMes, setErrorMes] = useState(false)
 
     const onSubmit = async (data) => {
         try {
@@ -19,15 +24,22 @@ const Card = observer((props) => {
                 response = await login(data.email, data.password);
             }
             else{
-                 response = await registration(data.email, data.password);
-                //console.log(response)
-                console.log({response})
+                response = await registration(data.email, data.password);
+                console.log(response)
+               // console.log(data.email, data.password)
                // alert(JSON.stringify({ email: data.email, password: data.password }));
-               // reset()
+                reset()
             }
+            user.setUser(response)
+            user.setIsAuth(true)
+            // localStorage.setItem("userId", data.id);
+            localStorage.setItem("userRole", response.role);
+            navigate(HOME_ROUTE)
             
-        } catch (error) {
-            console.log(error.message);
+        } catch (e) {
+            console.log({isRegistration});
+            alert(e.response.data.message);
+           // setErrorMes();
         }
        
     };
@@ -94,8 +106,8 @@ const Card = observer((props) => {
                                 )}
                                 </>
                             )}
+                                
                         </div>
-
                         <Button 
                             variant='submit'
                             type='submit'
