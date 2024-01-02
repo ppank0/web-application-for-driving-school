@@ -197,7 +197,7 @@ const CreateStudent = observer(() => {
                     </label>
                 </div>
                 <div className="form-row">
-                    <button type="submit">Create Student</button>
+                    <button type="submit">Записаться</button>
                 </div>
             </form>
         </Container>

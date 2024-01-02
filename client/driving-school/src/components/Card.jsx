@@ -3,21 +3,31 @@ import './card.css'
 import Footer from '../components/footer/Footer';
 import { useForm } from 'react-hook-form';
 import { useState } from 'react';
+import { login, registration } from '../http/userAPI';
+import { observer } from 'mobx-react-lite';
 
-const Card = (props) => {
+const Card = observer((props) => {
     const {title, isRegistration, buttonText} = props
     const { register, reset, handleSubmit, formState: {errors, isValid}, watch } = useForm({mode: 'onBlur'});
 
     const [showPassword, setShowPassword] = useState(false);
 
-    const onSubmit = (data) => {
-        if (isRegistration&&(data.password !== data.confirmPassword)) {
-            alert('Пароли не совпадают')
-            return;
-        }
-        else{
-            alert(JSON.stringify({ email: data.email, password: data.password }));
-            reset()
+    const onSubmit = async (data) => {
+        try {
+            let response
+            if (!isRegistration){
+                response = await login(data.email, data.password);
+            }
+            else{
+                 response = await registration(data.email, data.password);
+                //console.log(response)
+                console.log({response})
+               // alert(JSON.stringify({ email: data.email, password: data.password }));
+               // reset()
+            }
+            
+        } catch (error) {
+            console.log(error.message);
         }
        
     };
@@ -104,9 +114,8 @@ const Card = (props) => {
                 </Container>
             </form>
 
-            <Footer/>
         </>
      );
-}
+})
  
 export default Card;

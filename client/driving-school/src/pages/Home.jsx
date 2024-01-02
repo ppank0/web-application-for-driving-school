@@ -6,8 +6,11 @@ import whyImg from '../images/why-we-section.png'
 import './home.css'
 import GroupHomeCards from '../components/GroupHomeCards';
 import CostInfo from '../components/CostInfo';
+import { useContext } from 'react';
+import { Context } from '../index';
 
 const Home = () => {
+    const { user } = useContext(Context);
     return ( 
         <>
             {/* <Header/> */}
@@ -15,9 +18,12 @@ const Home = () => {
                 <div className="hero-section-text-box">
                     <p className="hero_section_text-box-p">Приглашаем присоединиться к нашей автошколе ДОСААФ города 
                     Быхов и начать ваше увлекательное и безопасное дорожное путешествие.</p>
-                    <Button className='btn-danger hero-button red-btn'>
-                        <Link to="/registration">Записаться</Link>
-                    </Button>
+                    {user.isAuth? 
+                    <div></div>:
+                        <Button className='btn-danger hero-button red-btn'>
+                            <Link to="/registration">Записаться</Link>
+                        </Button>
+                    }
                 </div>
 
                 <img src={heroImg} alt="" className="img-fluid hero-section-img"/>
