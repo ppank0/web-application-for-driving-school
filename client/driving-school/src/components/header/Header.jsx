@@ -6,18 +6,24 @@ import {
     NavDropdown,
     Navbar,
   } from "react-bootstrap";
-  //import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import logo from '../../images/logo.png'
 import './header.css'
 import {observer} from 'mobx-react-lite'
-// import About from './../../pages/About'
-// import Home from './../../pages/Home'
-// import Contacts from "../../pages/Contacts";
-// import Registration from './../../pages/Registration'
-// import LogIn from './../../pages/LogIn'
+import { useNavigate } from "react-router";
 import { Context } from "../../index";
+import { ADMIN_ROUTE, HOME_ROUTE, LOGIN_ROUTE, REGISTRATION_ROUTE, USER_PROFILE_ROUTE } from "../../utils/consts";
+
+
 const Header = observer(() => {
     const {user} = useContext(Context)
+    const navigate = useNavigate()
+
+    const logOut = ()=>{
+         //user.setUser({})
+         //user.setIsAuth(false)
+         localStorage.clear()
+         navigate(HOME_ROUTE)
+    }
     return ( 
         <>
             <Navbar className="header-navbar"
@@ -30,7 +36,7 @@ const Header = observer(() => {
                         <img src={logo} width={80} className="d-inline-block aligh-center header-logo" alt="logo"></img>
                     </Navbar.Brand>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-                    {user.isAuth ?  
+                    {localStorage.isAuth ?  
                     <Navbar.Collapse id="responsive-navbar-nav" >
                     <Nav className="me-auto w-100 header-menu"> 
                         <Nav.Link href="/"> ГЛАВНАЯ </Nav.Link>
@@ -44,9 +50,16 @@ const Header = observer(() => {
                             <NavDropdown.Item className="header-dropdown-item" href="/D">Категория D</NavDropdown.Item>
                         </NavDropdown>
                         <Nav.Link href="/contacts"> КОНТАКТЫ </Nav.Link>
-                        <Nav.Link href="/user"> ПРОФИЛЬ </Nav.Link>
+                        {localStorage.userRole === 'USER'? 
+                            <Nav.Link
+                            onClick={()=>navigate(USER_PROFILE_ROUTE)}> ПРОФИЛЬ 
+                            </Nav.Link> :
+                            <Nav.Link
+                            onClick={()=>navigate(ADMIN_ROUTE)}> АДМИН
+                            </Nav.Link> 
+                        }
                     </Nav>
-                        <Button href="/registration" className="aligh-center header-button" onClick={()=>user.setIsAuth(false)}>выход</Button>
+                        <Button  className="aligh-center header-button" onClick={()=>logOut()}>выход</Button>
                     </Navbar.Collapse>  
                     :
                     <Navbar.Collapse id="responsive-navbar-nav" >
@@ -63,26 +76,12 @@ const Header = observer(() => {
                             </NavDropdown>
                             <Nav.Link href="/contacts"> КОНТАКТЫ </Nav.Link>
                         </Nav>
-                            <Button href="/" className="aligh-center header-button" onClick={()=>user.setIsAuth(true)}>регистрация</Button>
+                            <Button  className="aligh-center header-button" onClick={()=> navigate(REGISTRATION_ROUTE)}>регистрация</Button>
                     </Navbar.Collapse> 
                     
                     }
                 </Container>
             </Navbar>
-
-            {/* <Router>
-                <Routes>
-                    <Route exact path="/" element={<Home/>} />
-                    <Route exact path="/about" element={<About/>} />
-                    <Route exact path="/contacts" element={<Contacts/>} />
-                    <Route exact path="/registration" element={<Registration/>} />
-                    <Route exact path="/login" element={<LogIn/>} />
-                    <Route exact path="#action/3.1" element={<Contacts/>} />
-                    <Route exact path="#action/3.2" element={<Contacts/>} />
-                    <Route exact path="#action/3.3" element={<Contacts/>} />
-                    <Route exact path="/blog" element={<Blog/>} />
-                </Routes>
-            </Router> */}
 
         </>
      );

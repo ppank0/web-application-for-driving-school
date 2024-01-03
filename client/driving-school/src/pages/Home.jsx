@@ -18,7 +18,7 @@ const Home = () => {
                 <div className="hero-section-text-box">
                     <p className="hero_section_text-box-p">Приглашаем присоединиться к нашей автошколе ДОСААФ города 
                     Быхов и начать ваше увлекательное и безопасное дорожное путешествие.</p>
-                    {user.isAuth? 
+                    {localStorage.isAuth? 
                     <div></div>:
                         <Button className='btn-danger hero-button red-btn'>
                             <Link to="/registration">Записаться</Link>

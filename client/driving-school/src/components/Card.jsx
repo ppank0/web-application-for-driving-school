@@ -34,6 +34,7 @@ const Card = observer((props) => {
             user.setIsAuth(true)
             // localStorage.setItem("userId", data.id);
             localStorage.setItem("userRole", response.role);
+            localStorage.setItem("userId", response.id);
             navigate(HOME_ROUTE)
             
         } catch (e) {
