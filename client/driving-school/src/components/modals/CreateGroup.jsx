@@ -1,7 +1,9 @@
 import { Button, Form, Modal} from "react-bootstrap";
 import { useState } from "react";
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { Context } from '../../index';
+import { fetchCourse } from '../../http/courseAPI';
+import { createGroup } from "../../http/studentAPI";
 
 const CreateGroup = ({show, hide}) => {
     const {course} = useContext(Context);
@@ -10,14 +12,22 @@ const CreateGroup = ({show, hide}) => {
   const [groupSize, setGroupSize] = useState('');
   const [_course, setCourse] = useState('');
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Добавьте здесь обработку отправки формы, сохранение данных или другую логику
-    console.log('Отправлено:', groupName, groupSize, course);
-    // Сбросить значения полей формы
-    setGroupName('');
-    setGroupSize('');
-    setCourse('');
+  useEffect(()=>{
+    fetchCourse().then(data=>course.setCourse(data))
+  }, [])
+
+  const addGroup = () => {
+    // Проверка наличия значений
+    if (groupName && groupSize && _course) {
+      createGroup({name:groupName, quantity: groupSize, courseId: _course})
+      setGroupName('');
+      setGroupSize('');
+      setCourse('');
+  
+      hide();
+    } else {
+      console.log('Заполните все поля');
+    }
   };
 
     return ( 
@@ -52,18 +62,19 @@ const CreateGroup = ({show, hide}) => {
                             required
                             >
                             <option value="">Выберите курс</option>
-                            {course.courses.map((item)=>(
-                                <option key={item.id}>{item.name}</option>
+                            {course.courses.map((item) => (
+                                <option key={item.id} value={item.id}>
+                                {item.name}
+                                </option>
                             ))}
-                            
-                            </Form.Select>
+                        </Form.Select>
                     </Form>
                 </Modal.Body>
             <Modal.Footer>
                 <Button className="ms-2" variant="outline-danger" onClick={hide}>
                     Отмена
                 </Button>
-                <Button variant="outline-dark" onClick={() => { }}>
+                <Button variant="outline-dark" onClick={() => {addGroup()}}>
                     Добавить
                 </Button>
             </Modal.Footer>
