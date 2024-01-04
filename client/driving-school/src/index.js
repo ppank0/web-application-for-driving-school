@@ -8,19 +8,19 @@ import StudentStore from './store/StudentStore';
 import CourseStore from './store/CourseStore';
 import Header from './components/header/Header';
 import Footer from './components/footer/Footer';
+import GalleryStore from './store/GalleryStore';
 
 
 export const Context  = createContext()
 const root = ReactDOM.createRoot(document.getElementById('root'));
-console.log(process.env.REACT_APP_API_URL);
 root.render(
   <Context.Provider value={{
     user: new UserStore(),
     student: new StudentStore(),
-    course : new CourseStore()
+    course : new CourseStore(),
+    images : new GalleryStore()
   }}>
     <React.StrictMode>
-    <Header/>
     <App />
     <Footer/>
   </React.StrictMode>

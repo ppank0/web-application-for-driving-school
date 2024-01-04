@@ -3,18 +3,23 @@ import Header from './components/header/Header'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import AppRouter from './components/AppRouter';
 import Footer from './components/footer/Footer';
+import { observer } from 'mobx-react-lite';
+import { useContext, useEffect, useState } from 'react';
+import { Context } from '.';
+import { check } from './http/userAPI';
+import { Spinner } from 'react-bootstrap';
 
-function App() {
+const App = observer(() => {
+  const {user} = useContext(Context)
+  const [loading, setLoading] = useState(true)
+
+
   return (
-    // <div className="App">
-     
-    // </div>
     <BrowserRouter>
-     {/* <Header/> */}
+      <Header/>
       <AppRouter/>
-     
     </BrowserRouter>
   );
-}
+});
 
 export default App;

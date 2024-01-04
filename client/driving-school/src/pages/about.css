@@ -1,5 +1,5 @@
 .about-container{
-    margin: 5% 0;
+    margin: 5% auto;
     display: flex;
     gap: 2.5rem;
     align-items:center ;

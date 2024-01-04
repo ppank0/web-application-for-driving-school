@@ -11,7 +11,8 @@ import ServiceC from './pages/servicePages/ServiceC'
 import ServiceCE from './pages/servicePages/ServiceCE'
 import ServiceD from './pages/servicePages/ServiceD'
 import CreateStudent from './pages/CreateStudent'
-import { ABOUT_ROUTE, ADMIN_ROUTE, CONTACTS_ROUTE, CREATE_STUDENT_ROUTE, HOME_ROUTE, LOGIN_ROUTE, REGISTRATION_ROUTE, SERVICE_BC_ROUTE, SERVICE_B_ROUTE, SERVICE_CE_ROUTE, SERVICE_C_ROUTE, SERVICE_D_ROUTE, USER_PROFILE_ROUTE } from './utils/consts'
+import { ABOUT_ROUTE, ADMIN_ROUTE, CONTACTS_ROUTE, CREATE_STUDENT_ROUTE, GALLERY_ROUTE, HOME_ROUTE, LOGIN_ROUTE, REGISTRATION_ROUTE, SERVICE_BC_ROUTE, SERVICE_B_ROUTE, SERVICE_CE_ROUTE, SERVICE_C_ROUTE, SERVICE_D_ROUTE, USER_PROFILE_ROUTE } from './utils/consts'
+import Gallery from './pages/Gallery'
 
 export const authRoutes = [
     {
@@ -69,4 +70,8 @@ export const publicRoutes = [
         path: SERVICE_D_ROUTE,
         Component: ServiceD
     },
+    {
+        path: GALLERY_ROUTE,
+        Component: Gallery
+    }
 ]

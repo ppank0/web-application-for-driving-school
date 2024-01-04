@@ -13,11 +13,11 @@ const Admin = () => {
             <Button variant="outline-dark"
              className="mt-2"
              onClick={()=> setExamVisible(true)}
-            >Добавить группу</Button>
+            >Добавить экзамен</Button>
 
             <Button variant="outline-dark"
              className="mt-2" 
-             onClick={()=> setGroupVisible(true)}>Добавить экзамен</Button>
+             onClick={()=> setGroupVisible(true)}>Добавить группу</Button>
             <Button variant="outline-dark"
             className="mt-2" onClick={()=> setImgVisible(true)}>Добавить изображение</Button>
 
