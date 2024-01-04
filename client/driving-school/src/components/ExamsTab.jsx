@@ -7,7 +7,7 @@ import { Spinner } from 'react-bootstrap';
 const ExamsTab = observer(() => {
   const { student } = useContext(Context);
   const [isStudent, setIsStudent] = useState();
-
+try {
   useEffect(() => {
     if (localStorage.studentId != null) {
       Promise.all([fetchExamResult(localStorage.studentId), fetchExam()]).then(
@@ -19,6 +19,10 @@ const ExamsTab = observer(() => {
       );
     }
   }, []);
+  
+} catch (error) {
+  console.log("ошибка в экзаменах")
+}
 
   const getExamName = (examId) => {
     const exam = student.exam.find((ex) => ex.id === examId);

@@ -15,21 +15,28 @@ const CabinetTab = observer(() => {
   const [dataLoaded, setDataLoaded] = useState(false);
   const [isStudent, setIsStudent] = useState()
  
-  useEffect(() => {
-    fetchStudent(localStorage.userId).then((data) => {
-      if (data != null) {
-        student.setStudent(data);
-        setName(data.name);
-        setPatronymic(data.patronymic);
-        setSurname(data.surname);
-        setIsStudent(localStorage.getItem("isStudent"))
-      }
-    });
-    fetchGroup().then((data) => {
-      student.setGroup(data);
-      setDataLoaded(true);
-    });
-  }, []);
+  try {
+    if(localStorage.userId!==null){
+      useEffect(() => {
+        fetchStudent(localStorage.userId).then((data) => {
+          if (data != null) {
+            student.setStudent(data);
+            setName(data.name);
+            setPatronymic(data.patronymic);
+            setSurname(data.surname);
+            setIsStudent(localStorage.getItem("isStudent"))
+          }
+        });
+        fetchGroup().then((data) => {
+          student.setGroup(data);
+          setDataLoaded(true);
+        });
+      }, []);
+    }
+    
+  } catch (error) {
+    console.log("ошибка в кабинете " +error)
+  }
 
   let groupName = "";
   if (dataLoaded && student.student && student.student.groupId) {
@@ -40,7 +47,6 @@ const CabinetTab = observer(() => {
       console.log("Поле name не определено");
     }
   }
-console.log(isStudent)
   return (
     <div className="container">
       <h1 className="mt-4 mb-4">Мой кабинет</h1>

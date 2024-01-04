@@ -6,19 +6,26 @@ import { observer } from 'mobx-react-lite';
 
 const LectureScheduleTab = observer(() => {
   const { student } = useContext(Context);
+  const [isStudent, setIsStudent] = useState();
 
-  useEffect(() => {
-    if (localStorage.groupId != null){
-      fetchLectureSchedules(localStorage.groupId).then((data) => {
-        if (data != null) {
-          student.setLectureSchedule(data);
-        }
-      });
-      fetchLectureInstructors().then((data) => {
-        student.setLectureInstructor(data)
-      });
-    }
-  }, []);
+  try {
+    useEffect(() => {
+      if (localStorage.groupId != null){
+        fetchLectureSchedules(localStorage.groupId).then((data) => {
+          if (data != null) {
+            student.setLectureSchedule(data);
+            setIsStudent(localStorage.getItem('isStudent'));
+          }
+        });
+        fetchLectureInstructors().then((data) => {
+          student.setLectureInstructor(data)
+        });
+      }
+    }, []);
+    
+  } catch (error) {
+    console.log("ошибка в лекциях")
+  }
 
   const getLectureDateTime = (lecture) => {
     if (lecture) {
@@ -41,18 +48,18 @@ const LectureScheduleTab = observer(() => {
   return (
     <div >
       <h2 className="mt-4 mb-4">Расписание занятий</h2>
-      {localStorage.getItem('isStudent') ?
-      <div className="card">
-        <ul className="list-group list-group-flush">
-          {student.lectureSchedule.map((lec) => (
-            <li key={lec.id} className="list-group-item">
-              <h3>Дата: {getLectureDateTime(lec)}</h3>
-              <p className="mb-1">Лектор: {getLecturerInfo(lec)}</p>
-            </li>
-          ))}
-        </ul>
-      </div> :
-      <h2 style={{color: 'gray', textAlign: 'center'}}>Вы не проходите обучение, запишитесь на курс</h2>
+      { isStudent ?
+        <div className="card">
+          <ul className="list-group list-group-flush">
+            {student.lectureSchedule.map((lec) => (
+              <li key={lec.id} className="list-group-item">
+                <h3>Дата: {getLectureDateTime(lec)}</h3>
+                <p className="mb-1">Лектор: {getLecturerInfo(lec)}</p>
+              </li>
+            ))}
+          </ul>
+        </div> :
+        <h2 style={{color: 'gray', textAlign: 'center'}}>Вы не проходите обучение, запишитесь на курс</h2>
       }
     </div >
   );
