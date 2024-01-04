@@ -4,21 +4,26 @@ import { fetchDrivingSchedules, fetchDrivingInstructors } from '../http/studentA
 
 const DrivingScheduleTab = () => {
   const { student } = useContext(Context);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isStudent, setIsStudent] = useState();
 
-  useEffect(() => {
-    if (localStorage.groupId != null) {
-      fetchDrivingSchedules(localStorage.studentId).then((data) => {
-        if (data != null) {
-          student.setDrivingSchedule(data);
-        }
-      });
-      fetchDrivingInstructors().then((data) => {
-        student.setDrivingInstructors(data);
-        setIsLoading(false); 
-      });
-    }
-  }, []);
+  try {
+    useEffect(() => {
+      if (localStorage.studentId != null) {
+        fetchDrivingSchedules(localStorage.studentId).then((data) => {
+          if (data != null) {
+            student.setDrivingSchedule(data);
+            setIsStudent(localStorage.getItem('isStudent'));
+          }
+        });
+        fetchDrivingInstructors().then((data) => {
+          student.setDrivingInstructors(data);
+        });
+      }
+    }, []);
+    
+  } catch (error) {
+    console.log("ошибка в расписании вождения")
+  }
 
   const getLectureDateTime = (lecture) => {
     if (lecture) {
@@ -41,11 +46,8 @@ const DrivingScheduleTab = () => {
   return (
     <div>
       <h2 className="mt-4 mb-4">Расписание вождения</h2>
-      {isLoading ? ( 
-        <p>Loading...</p>
-      ) : (
         <>
-          {localStorage.getItem('isStudent') ? (
+          {isStudent ? (
             <div className="card">
               <ul className="list-group list-group-flush">
                 {student.drivingSchedule.map((lec) => (
@@ -60,7 +62,7 @@ const DrivingScheduleTab = () => {
             <h2 style={{ color: 'gray', textAlign: 'center' }}>Вы не проходите обучение, запишитесь на курс</h2>
           )}
         </>
-      )}
+      
     </div>
   );
 };
