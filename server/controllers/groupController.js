@@ -29,7 +29,20 @@ class GroupController{
     }
 
     async getOne(req,res){
+      try {
+        const { id } = req.params;
+        const group = await Group.findOne({ where: { id} });
+    
+        if (!group) {
+          return res.status(404).json({ message: 'Group is not found.' });
+        }
 
+        return res.json(group);
+
+      } catch (error) {
+        console.error(`Failed to get group: ${error.message}`);
+        return res.status(500).send('An error occurred while retrieving the group.');
+      }
     }
 }
 

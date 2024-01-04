@@ -4,23 +4,25 @@ const ApiError= require('../error/ApiError')
 class StudentController{
     async create(req,res){
         try {
-            const { name } = req.body;
-            const { patronymic } = req.body;
-            const { surname } = req.body;
-            const { phone } = req.body;
-            const { adress} = req.body;
-            const { birthday } = req.body;
-            const { passport_series} = req.body;
-            const { passport_number} = req.body;
-            const { userId} = req.body;
-            const { groupId} = req.body;
-            // const userId = req.
-        
-            const student = await Student.create({ name, patronymic, surname, phone, adress, birthday, passport_series, passport_number, userId, groupId });
-            return res.json(student);
+          const { name, patronymic, surname, phone, adress, birthday, passport_series, passport_number, userId, groupId } = req.body;
+
+          const student = await Student.create({
+            name,
+            patronymic,
+            surname,
+            phone,
+            adress,
+            birthday,
+            passport_series,
+            passport_number,
+            userId,
+            groupId
+          });
+          console.log(student)
+          return res.json(student);
           } catch (error) {
-            console.error(`Failed to create course: ${error.message}`);
-            return res.status(500).send('An error occurred while creating the course.');
+            console.error(`Failed to create student: ${error.message}`);
+            return res.status(500).send('An error occurred while creating the student.');
           }
     }
 
@@ -44,9 +46,9 @@ class StudentController{
     }
 
     async getOne(req,res){
-        const {id}= req.params
+        const {id}= req.params;
         const student = await Student.findOne(
-            {where:{id}}
+            {where:{userId: id}}
         )
         return res.json(student)
     }

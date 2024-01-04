@@ -15,7 +15,7 @@ class ExamController{
           }
     }
 
-    async gelAll(req,res){
+    async getAll(req,res){
         const exams = await Exam.findAll()
         return res.json(exams)
     }
