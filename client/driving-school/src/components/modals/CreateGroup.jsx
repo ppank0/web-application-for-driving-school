@@ -8,7 +8,7 @@ import { createGroup } from "../../http/studentAPI";
 const CreateGroup = ({show, hide}) => {
     const {course} = useContext(Context);
 
-    const [groupName, setGroupName] = useState('');
+  const [groupName, setGroupName] = useState('');
   const [groupSize, setGroupSize] = useState('');
   const [_course, setCourse] = useState('');
 

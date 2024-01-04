@@ -13,8 +13,8 @@ const Pages = observer(() => {
     return ( 
         <>
         <nav aria-label="Page navigation example" >
-            <ul class="pagination" style={{justifyContent:'center'}}>
-                <li class="page-item">
+            <ul className="pagination" style={{justifyContent:'center'}}>
+                <li className="page-item">
                     </li>
                         {pages.map(page=>{
                             return <Pagination.Item 
@@ -24,7 +24,7 @@ const Pages = observer(() => {
                             >
                                 {page}</Pagination.Item>
                         })}
-                    <li class="page-item">
+                    <li className="page-item">
                 </li>
             </ul>
         </nav>
