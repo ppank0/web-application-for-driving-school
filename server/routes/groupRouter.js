@@ -5,5 +5,6 @@ const checkRole = require('../middleware/checkRoleMiddleware')
 
 router.post('/',checkRole('ADMIN'), groupController.create)//только админ сможет создать
 router.get('/', groupController.gelAll)
+router.get('/:id', groupController.getOne)
 
 module.exports=router

@@ -3,7 +3,7 @@ const router = new Router()
 const examController = require('../controllers/examController')
 
 router.post('/', examController.create)
-router.get('/', examController.gelAll)
+router.get('/', examController.getAll)
 router.get('/:id', )
 
 module.exports=router
