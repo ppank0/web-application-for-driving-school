@@ -1,30 +1,42 @@
 import React, { useState, useEffect } from 'react';
 import { observer } from 'mobx-react-lite';
 //import { useStores } from '../hooks/useStores';
-import { useContext } from 'react';
+import { useContext,  } from 'react';
 import { Context } from '../index';
 import './createStudent.css'
 import { Container } from 'react-bootstrap';
 import Footer from '../components/footer/Footer';
+import { fetchCourse } from '../http/courseAPI';
+import { fetchGroup } from '../http/studentAPI';
+import { createStudent } from '../http/studentAPI';
+import { useNavigate }from 'react-router-dom'
+import { USER_PROFILE_ROUTE } from '../utils/consts';
 
 const CreateStudent = observer(() => {
   //const { studentStore, categoryStore } = useStores();
-  const { studentStore, category } = useContext(Context);
+  const { student, course } = useContext(Context);
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    fetchCourse().then((data) => {
+      course.setCourse(data);
+    });
+  
+    fetchGroup().then((data) => {
+      student.setGroup(data);
+    });
+  }, []);
 
   const [name, setName] = useState('');
   const [patronymic, setPatronymic] = useState('');
   const [surname, setSurname] = useState('');
   const [phone, setPhone] = useState('');
-  const [address, setAddress] = useState('');
+  const [adress, setAddress] = useState('');
   const [birthday, setBirthday] = useState('');
   const [passportSeries, setPassportSeries] = useState('');
   const [passportNumber, setPassportNumber] = useState('');
   const [categor, setCategor] = useState('');
-
-//   useEffect(() => {
-//     // Загрузка категорий из базы данных при монтировании компонента
-//     categoryStore.fetchCategoriesFromDatabase();
-//   }, []);
+  const [group, setGroup] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -34,11 +46,12 @@ const CreateStudent = observer(() => {
       name.trim() === '' ||
       surname.trim() === '' ||
       phone.trim() === '' ||
-      address.trim() === '' ||
+      adress.trim() === '' ||
       birthday.trim() === '' ||
       passportSeries.trim() === '' ||
       passportNumber.trim() === '' ||
-      categor.trim() === ''
+      categor.trim() === '' ||
+      group.trim()===''
     ) {
       alert('Пожалуйста, заполните все поля');
       return;
@@ -52,32 +65,46 @@ const CreateStudent = observer(() => {
       alert('Вам должно быть больше 16');
       return;
     }
-    // Создание нового студента
-    const newStudent = {
-      name,
-      patronymic,
-      surname,
-      phone,
-      address,
-      birthday,
-      passport_series: passportSeries,
-      passport_number: passportNumber,
-      categor,
-    };
-
-    // Сохранение студента в StudentStore
-    studentStore.setStudent(newStudent);
-
-    // Сброс полей формы
-    setName('');
-    setPatronymic('');
-    setSurname('');
-    setPhone('');
-    setAddress('');
-    setBirthday('');
-    setPassportSeries('');
-    setPassportNumber('');
-    setCategor('');
+    if (categor !== group) {
+        alert('Выбранная категория и группа не соответствуют друг другу!');
+        return;
+    }
+    try {
+        const formattedBirthday = new Date(birthday).toISOString();
+        const Student = {
+            name: name,
+            patronymic: patronymic,
+            surname: surname,
+            phone: phone,
+            adress: adress,
+            birthday: formattedBirthday,
+            passport_series: passportSeries,
+            passport_number: passportNumber,
+            userId: localStorage.userId,
+            groupId: group
+          };
+          createStudent(Student);
+          student.setStudent(Student)
+          student.setIsStudent(true)
+          localStorage.setItem("isStudent", true)
+          localStorage.setItem('groupId', Student.groupId)
+          navigate(USER_PROFILE_ROUTE);
+    
+        // Сброс полей формы
+        setName('');
+        setPatronymic('');
+        setSurname('');
+        setPhone('');
+        setAddress('');
+        setBirthday('');
+        setPassportSeries('');
+        setPassportNumber('');
+        setCategor('');
+        setGroup('');
+        
+    } catch (error) {
+        alert(error.response.data.message);
+    }
   };
 
   return (
@@ -86,7 +113,7 @@ const CreateStudent = observer(() => {
             <form onSubmit={handleSubmit}>
                 <div className="form-row">
                     <label>
-                    <span>Name:</span>
+                    <span>Имя:</span>
                     <input
                         className='create_student_form-input'
                         type="text"
@@ -98,7 +125,7 @@ const CreateStudent = observer(() => {
                 </div>
                 <div className="form-row">
                     <label>
-                    <span>Patronymic:</span>
+                    <span>Отчество:</span>
                     <input
                         className='create_student_form-input'
                         type="text"
@@ -109,7 +136,7 @@ const CreateStudent = observer(() => {
                 </div>
                 <div className="form-row">
                     <label>
-                    <span>Surname:</span>
+                    <span>Фамилия:</span>
                     <input
                         className='create_student_form-input'
                         type="text"
@@ -121,7 +148,7 @@ const CreateStudent = observer(() => {
                 </div>
                 <div className="form-row">
                     <label>
-                    <span>Phone:</span>
+                    <span>Номер телефона:</span>
                     <input
                         className='create_student_form-input'
                         type="text"
@@ -134,11 +161,11 @@ const CreateStudent = observer(() => {
                 </div>
                 <div className="form-row">
                     <label>
-                    <span>Address:</span>
+                    <span>Адрес проживания:</span>
                     <input
                         className='create_student_form-input'
                         type="text"
-                        value={address}
+                        value={adress}
                         onChange={(e) => setAddress(e.target.value)}
                         required
                     />
@@ -146,7 +173,7 @@ const CreateStudent = observer(() => {
                 </div>
                 <div className="form-row">
                     <label>
-                    <span>Birthday:</span>
+                    <span>Дата рождения:</span>
                     <input
                         type="date"
                         className="form-control create_student_form-input"
@@ -159,7 +186,7 @@ const CreateStudent = observer(() => {
                 </div>
                 <div className="form-row">
                     <label>
-                    <span>Passport Series:</span>
+                    <span>Серия паспорта:</span>
                     <input
                         className='create_student_form-input'
                         type="text"
@@ -171,7 +198,7 @@ const CreateStudent = observer(() => {
                 </div>
                 <div className="form-row">
                     <label>
-                    <span>Passport Number:</span>
+                    <span>Номер паспорта:</span>
                     <input
                         className='create_student_form-input'
                         type="text"
@@ -183,16 +210,34 @@ const CreateStudent = observer(() => {
                 </div>
                 <div className="form-row">
                     <label>
-                    <span>Category:</span>
+                    <span>Категория:</span>
                     <select
                         value={categor}
                         onChange={(e) => setCategor(e.target.value)}
                         required
                     >
                         <option value="">Выберите категорию</option>
-                            {category.categories.map((item) => (
-                            <option key={item.id}>{item.name}</option>
+                            {course.courses.map((item) => (
+                            <option key={item.id} value={item.id}>{item.name}</option>
                             ))}
+                    </select>
+                    </label>
+                </div>
+                <div className="form-row">
+                    <label>
+                    <span>Группа:</span>
+                    <select
+                        value={group}
+                        onChange={(e) => setGroup(e.target.value)}
+                        required
+                        disabled={!categor}
+                    >
+                        <option value="">Выберите группу</option>
+                        {student.groups.map((group) => (
+                        <option key={group.id} value={group.courseId}>
+                            {group.name}
+                        </option>
+                        ))}
                     </select>
                     </label>
                 </div>
@@ -201,7 +246,6 @@ const CreateStudent = observer(() => {
                 </div>
             </form>
         </Container>
-        {/* <Footer/> */}
     </>
   );
 });
