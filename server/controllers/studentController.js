@@ -4,22 +4,23 @@ const ApiError= require('../error/ApiError')
 class StudentController{
     async create(req,res){
         try {
-          const { name, patronymic, surname, phone, adress, birthday, passport_series, passport_number, userId, groupId } = req.body;
+            const { name, patronymic, surname, phone, adress, birthday, passport_series, passport_number, userId, groupId } = req.body;
 
-          const student = await Student.create({
-            name,
-            patronymic,
-            surname,
-            phone,
-            adress,
-            birthday,
-            passport_series,
-            passport_number,
-            userId,
-            groupId
-          });
-          console.log(student)
-          return res.json(student);
+            const student = await Student.create({
+              name,
+              patronymic,
+              surname,
+              phone,
+              adress,
+              birthday,
+              passport_series,
+              passport_number,
+              userId,
+              groupId
+            });
+            
+            console.log(student)
+            return res.json(student);
           } catch (error) {
             console.error(`Failed to create student: ${error.message}`);
             return res.status(500).send('An error occurred while creating the student.');
